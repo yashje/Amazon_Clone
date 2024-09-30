@@ -16,15 +16,15 @@ async function main() {
   const [deployer] = await ethers.getSigners()
 
   // Deploy Dappazon
-  const Dappazon = await hre.ethers.getContractFactory("Dappazon")
-  const dappazon = await Dappazon.deploy()
-  await dappazon.deployed()
+  const Amazon_Clone = await hre.ethers.getContractFactory("Amazon_Clone")
+  const amazon_Clone = await Amazon_Clone.deploy()
+  await amazon_Clone.deployed()
 
-  console.log(`Deployed Dappazon Contract at: ${dappazon.address}\n`)
+  console.log(`Deployed Dappazon Contract at: ${amazon_Clone.address}\n`)
 
   // Listing items...
   for (let i = 0; i < items.length; i++) {
-    const transaction = await dappazon.connect(deployer).list(
+    const transaction = await amazon_Clone.connect(deployer).productList(
       items[i].id,
       items[i].name,
       items[i].category,
